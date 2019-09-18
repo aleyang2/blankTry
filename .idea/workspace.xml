@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a99d490-ef59-43e8-ab2c-4ae9379b0193" name="Default Changelist" comment="" />
+    <list default="true" id="1a99d490-ef59-43e8-ab2c-4ae9379b0193" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/quartz_2_3_0_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quartz/MyJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quartz/SchedulerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blankTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blankTry.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/blankTry/runMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/runMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runMain.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +29,20 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1QkO1qHXkHWenkZezFMuE3WQVmN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../webexFilter" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -68,11 +84,22 @@
       <workItem from="1568664120132" duration="597000" />
       <workItem from="1568667288447" duration="4000" />
       <workItem from="1568739481648" duration="3771000" />
-      <workItem from="1568753314250" duration="11375000" />
+      <workItem from="1568753314250" duration="17899000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
