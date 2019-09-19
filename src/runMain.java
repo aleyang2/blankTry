@@ -1,7 +1,6 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class runMain {
     public static void main(String[] args) throws Exception {
@@ -113,8 +112,28 @@ public class runMain {
         }
 
 
+        try {
+            // Edit database:
+            PreparedStatement preparedStatement;
+            ResultSet res;
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,password);
+            if(!con.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+            // preparedStatement = con.prepareStatement("Insert into WBXSITECONF (SITEID,ITEMNAME,ITEMVALUE,LASTMODIFIEDTIME) values (112345,'allowedOrigin','boa.webex.com',CURDATE());");
 
+            preparedStatement = con.prepareStatement("insert into WBXSITECONF (SITEID,ITEMNAME,ITEMVALUE,LASTMODIFIEDTIME)" + "values(?,?,?,?)");
+            preparedStatement.setInt(1, 983266);
+            preparedStatement.setString(2, "allowedOrigins");
+            preparedStatement.setString(3, "go.webex.com, google.com");
+            DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date mydate2 = dateFormat2.parse("2019-09-19");
+            preparedStatement.setDate(4, new java.sql.Date(mydate2.getTime()));
+            preparedStatement.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 //    private static Person XMLtoPersonExample(String filename) throws Exception {
