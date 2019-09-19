@@ -16,20 +16,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/apache-log4j-2.12.1-bin" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/apache-log4j-2.12.1-bin" />
-        </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/apache-log4j-2.12.1-bin" recursive="false" />
-        <jarDirectory url="file://$MODULE_DIR$/apache-log4j-2.12.1-bin" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$USER_HOME$/Downloads/quartz-2.3.0-SNAPSHOT/lib" />
@@ -37,6 +24,31 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$USER_HOME$/Downloads/quartz-2.3.0-SNAPSHOT/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/apache-log4j-2.12.1-bin" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/apache-log4j-2.12.1-bin" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Downloads/apache-log4j-2.12.1-bin" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/Downloads/apache-log4j-2.12.1-bin" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-java-5.1.48" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-java-5.1.48/src" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Downloads/mysql-connector-java-5.1.48" recursive="false" />
       </library>
     </orderEntry>
   </component>

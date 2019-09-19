@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a99d490-ef59-43e8-ab2c-4ae9379b0193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/quartz_2_3_0_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Quartz/MyJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Quartz/SchedulerUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blankTry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blankTry.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/blankTry/runMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/runMain.class" afterDir="false" />
@@ -42,7 +37,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -84,7 +79,7 @@
       <workItem from="1568664120132" duration="597000" />
       <workItem from="1568667288447" duration="4000" />
       <workItem from="1568739481648" duration="3771000" />
-      <workItem from="1568753314250" duration="17899000" />
+      <workItem from="1568753314250" duration="23876000" />
     </task>
     <servers />
   </component>

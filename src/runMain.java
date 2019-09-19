@@ -1,11 +1,7 @@
-import Entity.Person;
-import Quartz.MyJob;
-import Quartz.SchedulerUtil;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class runMain {
     public static void main(String[] args) throws Exception {
@@ -55,25 +51,88 @@ public class runMain {
 
         // Quartz test:
         // 简单任务调度， 每个多少时间执行一次，执行n次
-        SchedulerUtil.handleSimpleTrigger("Test1","Group1", "TrigTest1", "TrigGroup1", MyJob.class, 1, 8);
+        // SchedulerUtil.handleSimpleTrigger("Test1","Group1", "TrigTest1", "TrigGroup1", MyJob.class, 1, 8);
+
+
+        //声明Connection对象
+        Connection con;
+        //驱动程序名
+        String driver = "com.mysql.jdbc.Driver";
+        //URL指向要访问的数据库名mydata
+        String url = "jdbc:mysql://127.0.0.1:3306/CorsTest";
+        //MySQL配置时的用户名
+        String user = "root";
+        //MySQL配置时的密码
+        String password = "Tearose1184?";
+        //遍历查询结果集
+        try {
+            //加载驱动程序
+            Class.forName(driver);
+            //1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url,user,password);
+            if(!con.isClosed())
+                System.out.println("Succeeded connecting to the Database!");
+            //2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            //要执行的SQL语句
+            String sql = "select * from WBXSITECONF";
+            //3.ResultSet类，用来存放获取的结果集！！
+            ResultSet rs = statement.executeQuery(sql);
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("执行结果如下所示:");
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("SITEID" + "\t" + "ITEMNAME " + "\t" + "ITEMVALUE " + "\t" + "LASTMODIFIEDTIME");
+            System.out.println("-------------------------------------------------------------------------------------");
+            String SITEID = null;
+            String ITEMNAME = null;
+            String ITEMVALUE = null;
+            String LASTMODIFIEDTIME = null;
+            while(rs.next()){
+                //获取SITEID这列数据
+                SITEID = rs.getString("SITEID");
+                //获取ITEMNAME这列数据
+                ITEMNAME = rs.getString("ITEMNAME");
+                //
+                ITEMVALUE = rs.getString("ITEMVALUE");
+                //
+                LASTMODIFIEDTIME = rs.getString("LASTMODIFIEDTIME");
+                //输出结果
+                System.out.println(SITEID + "\t" + ITEMNAME + "\t" + ITEMVALUE + "\t" + LASTMODIFIEDTIME);
+            }
+            rs.close();
+            con.close();
+        } catch(ClassNotFoundException e) {
+            //数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        } catch(Exception e) {
+            //数据库连接失败异常处理
+            e.printStackTrace();
+        } finally {
+            System.out.println("数据库数据成功获取！！");
+        }
+
+
+
+
     }
 
-    private static Person XMLtoPersonExample(String filename) throws Exception {
-        File file = new File(filename);
-        JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
-
-        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        return (Person) jaxbUnmarshaller.unmarshal(file);
-    }
-
-    private static void personToXMLExample(String filename, Person person) throws Exception {
-        File file = new File(filename);
-        JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
-
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        jaxbMarshaller.marshal(person, file);
-        jaxbMarshaller.marshal(person, System.out);
-    }
+//    private static Person XMLtoPersonExample(String filename) throws Exception {
+//        File file = new File(filename);
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
+//
+//        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+//        return (Person) jaxbUnmarshaller.unmarshal(file);
+//    }
+//
+//    private static void personToXMLExample(String filename, Person person) throws Exception {
+//        File file = new File(filename);
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
+//
+//        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//
+//        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//        jaxbMarshaller.marshal(person, file);
+//        jaxbMarshaller.marshal(person, System.out);
+//    }
 }
