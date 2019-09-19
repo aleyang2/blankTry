@@ -1,5 +1,6 @@
 package vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SiteAllowedOriginVO {
@@ -15,8 +16,7 @@ public class SiteAllowedOriginVO {
     private String itemValue = "allowedOrigins";
 
     /** allowed Origins */
-    private List<String> allowedOrigins;
-
+    private List<String> allowedOrigins = new ArrayList<>();
 
     public long getSiteID() {
         return siteID;

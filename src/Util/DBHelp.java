@@ -1,6 +1,5 @@
 package Util;
 
-import sun.misc.Cache;
 import vo.SiteAllowedOriginVO;
 
 import java.sql.Connection;
@@ -14,41 +13,41 @@ public class DBHelp {
 
     private static Logger logger = Logger.getLogger(DBHelp.class.getName());
 
-    private DBHelp() {
+    public DBHelp() {
 
     }
 
     // query all allowed_origins for a specific siteID
-    private static final String QUERY_ALLOWED_ORIGINS_BY_SITEID = "select ... ";
+    private static final String QUERY_ALLOWED_ORIGINS_BY_SITEID =
+            "SELECT ITEMVALUE\n" +
+            "FROM WBXSITECONFIG\n" +
+            "WHERE SITEID = ? AND ITEMNAME = 'allowedOrigin'";
 
     // need to get whitelist (allowedOrigins) from database
     // SITEID ITEMNAME ITEMVALUE LASTMODIFIEDTIME
-    public static SiteAllowedOriginVO getSiteAllowedOrigin(Connection conn, String sql, long siteID) throws SQLException {
+    public static SiteAllowedOriginVO getSiteAllowedOrigin(Connection conn, long siteID) throws SQLException {
         SiteAllowedOriginVO siteAllowedOriginVO = new SiteAllowedOriginVO();
 
         ResultSet rs = null;
-        PreparedStatement preStatement = conn.prepareStatement(sql);
+        PreparedStatement preStatement = null;
 
         try {
-            preStatement = conn.prepareStatement(sql);
+            preStatement = conn.prepareStatement(QUERY_ALLOWED_ORIGINS_BY_SITEID);
+            int step = 1;
+            preStatement.setLong(1, siteID);
+            siteAllowedOriginVO.setSiteID(siteID);
             rs = preStatement.executeQuery();
-            if (rs.next()) {
-                siteAllowedOriginVO.setSiteID(rs.getLong("siteid"));
+            while (rs.next()) {
+                // The rs is going to be just one column with the allowedOrigins.
                 // iterator to get a list of allowedOrigins.
-                siteAllowedOriginVO.setItemValue(rs.getString("itemValue"));
-                //
+                siteAllowedOriginVO.addAllowedOrigins(rs.getString(1));
             }
             // say we have a whitelist here get out
             List<String> allowedOrigins = siteAllowedOriginVO.getAllowedOrigins();
             // load it into filter by calling out the updating method.
-
-
         } catch (SQLException e) {
-            if (sql.indexOf("wbxsitedomainmapping") > 0) {
-                logger.info("No found wbxsitedomainmapping table!");
-            } else {
-                throw e;
-            }
+            e.printStackTrace();
+            throw e;
         } finally {
             if (rs != null) {
                 rs.close();
@@ -59,8 +58,4 @@ public class DBHelp {
         }
         return siteAllowedOriginVO;
     }
-
-//    public static String tryCache(String s) {
-//        Cache c =
-//    }
 }
