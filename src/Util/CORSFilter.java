@@ -18,6 +18,8 @@ package Util;
  */
 // package org.apache.catalina.filters;
 
+import vo.SiteAllowedOriginVO;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +27,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
+
+import static org.apache.logging.log4j.FormatterLoggerManualExample.logger;
 
 //import org.apache.log4j.Logger;
 
@@ -125,6 +129,39 @@ public final class CORSFilter implements Filter {
         this.exposedHeaders = new HashSet<String>();
     }
 
+    private long getSiteID(String siteIDstr) {
+        if (null == siteIDstr) {
+            return -1;
+        }
+
+        try {
+            return Long.parseLong(siteIDstr);
+        } catch (NumberFormatException e) {
+            logger.error("getSiteID failed in request " + e);
+            return -1; // invalid <siteID>
+        }
+    }
+
+//    private long getSiteIdInRequest(ServletRequest request) throws SQLException {
+//        String xmlRequest = request.getParameter("XML");
+//        String securityContext = StringUtil.parseElement(xmlRequest, "securityContext");
+//        String siteIDstr = StringUtil.parseElement(securityContext, "siteID");
+//        long siteID = getSiteID(siteIDstr);
+//        String siteName = StringUtil.parseElement(securityContext, "siteName");
+//        if (logger.isDebugEnabled()) {
+//            logger.debug("SiteID is   " + siteID);
+//        }
+//        if (siteID > 0) {
+//            return siteID;
+//        } else {
+//            SiteInfoVO vo = DbUtil.getInstance().lookupSiteandDomain(siteID, siteName);
+//            if (vo != null)
+//                return vo.getSiteID();
+//            else
+//                return -1;
+//        }
+//    }
+
     // --------------------------------------------------------- Public methods
     @Override
     public void doFilter(final ServletRequest servletRequest,
@@ -149,6 +186,14 @@ public final class CORSFilter implements Filter {
         if (decorateRequest) {
             CORSFilter.decorateCORSProperties(request, requestType);
         }
+
+        // In XMLProxy, there is a function getSiteIdInRequest(ServletRequest request)
+        // also, getSiteID(String siteIDstr)
+        // 这里需要拿到siteId，assume已经拿到了
+        long siteId = 11308;
+        SiteAllowedOriginVO curSiteAllowedOriginVO = Cache.getSiteAllowedOriginVO(siteId);
+        updateAllowedOrigin(curSiteAllowedOriginVO);
+
         switch (requestType) {
             case SIMPLE:
                 // Handles a Simple CORS request.
@@ -170,6 +215,15 @@ public final class CORSFilter implements Filter {
                 // Handles a CORS request that violates specification.
                 this.handleInvalidCORS(request, response, filterChain);
                 break;
+        }
+    }
+
+    private void updateAllowedOrigin (SiteAllowedOriginVO siteAllowedOriginVO) {
+        if (siteAllowedOriginVO.getAllowedOrigins() != null) {
+            this.anyOriginAllowed = false;
+            Set<String> setAllowedOrigins = new HashSet<>(siteAllowedOriginVO.getAllowedOrigins());
+            this.allowedOrigins.clear();
+            this.allowedOrigins.addAll(setAllowedOrigins);
         }
     }
 

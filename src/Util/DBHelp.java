@@ -25,7 +25,7 @@ public class DBHelp {
 
     // need to get whitelist (allowedOrigins) from database
     // SITEID ITEMNAME ITEMVALUE LASTMODIFIEDTIME
-    public static SiteAllowedOriginVO getSiteAllowedOrigin(Connection conn, long siteID) throws SQLException {
+    public static SiteAllowedOriginVO getSiteAllowedOrigins(Connection conn, long siteID) throws SQLException {
         SiteAllowedOriginVO siteAllowedOriginVO = new SiteAllowedOriginVO();
 
         ResultSet rs = null;
@@ -58,4 +58,7 @@ public class DBHelp {
         }
         return siteAllowedOriginVO;
     }
+
+    // Store SiteAllowedOriginVO in the cache.
+
 }

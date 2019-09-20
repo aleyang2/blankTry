@@ -42,5 +42,7 @@ public final class Cache {
         return siteEnforceHttpMap.put(String.valueOf(siteId), siteAllowedOriginVO);
     }
 
-    //
+    public static SiteAllowedOriginVO getSiteAllowedOriginVO(long siteId) {
+        return (SiteAllowedOriginVO) siteEnforceHttpMap.get(String.valueOf(siteId));
+    }
 }

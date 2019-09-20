@@ -144,12 +144,14 @@ public class runMain {
         DbUtil dbutil = new DbUtil();
         Connection conn = dbutil.getConnection();
         DBHelp dbHelp = new DBHelp();
-        SiteAllowedOriginVO testSiteAllowedOrigin = dbHelp.getSiteAllowedOrigin(conn, 113082);
+        SiteAllowedOriginVO testSiteAllowedOrigin = dbHelp.getSiteAllowedOrigins(conn, 113082);
         List<String> res = testSiteAllowedOrigin.getAllowedOrigins();
         for (int i = 0; i < res.size(); i++) {
             System.out.println(res.get(i));
         }
         System.out.println(testSiteAllowedOrigin.getSiteID());
+
+
     }
 
 //    private static Person XMLtoPersonExample(String filename) throws Exception {
