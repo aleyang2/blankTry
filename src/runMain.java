@@ -1,5 +1,8 @@
+import Quartz.AllowedOriginsUpdateJob;
 import Util.DBHelp;
 import Util.DbUtil;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
 import vo.SiteAllowedOriginVO;
 
 import java.sql.Connection;
@@ -151,7 +154,19 @@ public class runMain {
         }
         System.out.println(testSiteAllowedOrigin.getSiteID());
 
+        JobDetail jobDetail = JobBuilder.newJob(AllowedOriginsUpdateJob.class)
+                .withIdentity("QuartzJob", "JobGroup")
+                .usingJobData("siteId", testSiteAllowedOrigin.getSiteID()).build();
 
+        //
+        Trigger triggerAllowedOriginsUpdateJob = TriggerBuilder.newTrigger()
+                .withIdentity("QuartzUpdateAllowedOriginJobTrigger", "TriggerGroup")
+                .startNow().withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever()).build();
+
+        SchedulerFactory factory = new StdSchedulerFactory();
+        Scheduler scheduler = factory.getScheduler();
+        scheduler.start();
+        scheduler.scheduleJob(jobDetail,triggerAllowedOriginsUpdateJob);
     }
 
 //    private static Person XMLtoPersonExample(String filename) throws Exception {
