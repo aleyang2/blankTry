@@ -1,12 +1,4 @@
-import Quartz.AllowedOriginsUpdateJob;
-import Util.DBHelp;
-import Util.DbUtil;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
-import vo.SiteAllowedOriginVO;
-
-import java.sql.Connection;
-import java.util.List;
+import Entity.People;
 
 public class runMain {
     public static void main(String[] args) throws Exception {
@@ -140,33 +132,50 @@ public class runMain {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
+//        /**
+//         * Try to use DBHelp and DbUtil to get SiteAllowedOriginVO
+//         */
+//
+//        DbUtil dbutil = new DbUtil();
+//        Connection conn = dbutil.getConnection();
+//        DBHelp dbHelp = new DBHelp();
+//        SiteAllowedOriginVO testSiteAllowedOrigin = dbHelp.getSiteAllowedOrigins(conn, 113082);
+//        List<String> res = testSiteAllowedOrigin.getAllowedOrigins();
+//        for (int i = 0; i < res.size(); i++) {
+//            System.out.println(res.get(i));
+//        }
+//        System.out.println(testSiteAllowedOrigin.getSiteID());
+//
+//        JobDetail jobDetail = JobBuilder.newJob(AllowedOriginsUpdateJob.class)
+//                .withIdentity("QuartzJob", "JobGroup")
+//                .usingJobData("siteId", testSiteAllowedOrigin.getSiteID()).build();
+//
+//        //
+//        Trigger triggerAllowedOriginsUpdateJob = TriggerBuilder.newTrigger()
+//                .withIdentity("QuartzUpdateAllowedOriginJobTrigger", "TriggerGroup")
+//                .startNow().withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever()).build();
+//
+//        SchedulerFactory factory = new StdSchedulerFactory();
+//        Scheduler scheduler = factory.getScheduler();
+//        scheduler.start();
+//        scheduler.scheduleJob(jobDetail,triggerAllowedOriginsUpdateJob);
+
         /**
-         * Try to use DBHelp and DbUtil to get SiteAllowedOriginVO
+         * This is a testCode for extends
          */
+        // Test on VRPlayGround
+        VRPlayGround vrPlayGround = new VRPlayGround();
+        People child1 = new People("Alex", 27, 100, "find");
+        vrPlayGround.init(child1, "Nowhere", null);
+        vrPlayGround.doActivity("VR testing");
+        System.out.println(vrPlayGround.getDevice());
 
-        DbUtil dbutil = new DbUtil();
-        Connection conn = dbutil.getConnection();
-        DBHelp dbHelp = new DBHelp();
-        SiteAllowedOriginVO testSiteAllowedOrigin = dbHelp.getSiteAllowedOrigins(conn, 113082);
-        List<String> res = testSiteAllowedOrigin.getAllowedOrigins();
-        for (int i = 0; i < res.size(); i++) {
-            System.out.println(res.get(i));
-        }
-        System.out.println(testSiteAllowedOrigin.getSiteID());
-
-        JobDetail jobDetail = JobBuilder.newJob(AllowedOriginsUpdateJob.class)
-                .withIdentity("QuartzJob", "JobGroup")
-                .usingJobData("siteId", testSiteAllowedOrigin.getSiteID()).build();
-
-        //
-        Trigger triggerAllowedOriginsUpdateJob = TriggerBuilder.newTrigger()
-                .withIdentity("QuartzUpdateAllowedOriginJobTrigger", "TriggerGroup")
-                .startNow().withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever()).build();
-
-        SchedulerFactory factory = new StdSchedulerFactory();
-        Scheduler scheduler = factory.getScheduler();
-        scheduler.start();
-        scheduler.scheduleJob(jobDetail,triggerAllowedOriginsUpdateJob);
+        VRHome vrHome = new VRHome();
+        People child2 = new People("Tom", 21, 200, "test");
+        vrHome.init(child2, "How", null);
+        vrHome.doActivity("VR Home is here");
+        System.out.println(vrHome.getDevice());
+        vrHome.doActivity("what",child2);
     }
 
 //    private static Person XMLtoPersonExample(String filename) throws Exception {

@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a99d490-ef59-43e8-ab2c-4ae9379b0193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/Consumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Device.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Location.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/PlayGround.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/VRHome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/VRPlayGround.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blankTry/Util/Cache.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/Util/Cache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blankTry/Util/DBHelp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/Util/DBHelp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/blankTry/Util/DbUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/Util/DbUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/blankTry/runMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/blankTry/runMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/CORSFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/CORSFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Util/DBHelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/DBHelp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/runMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/runMain.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -57,13 +55,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Consumer">
+  <component name="RunManager" selected="Application.runMain">
     <configuration name="Consumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Entity.Consumer" />
       <module name="blankTry" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Entity.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,7 +74,7 @@
       <module name="blankTry" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Entity.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,9 +91,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.runMain" />
         <item itemvalue="Application.Consumer" />
         <item itemvalue="Application.Producer" />
-        <item itemvalue="Application.runMain" />
       </list>
     </recent_temporary>
   </component>
@@ -116,7 +114,8 @@
       <workItem from="1568753314250" duration="27061000" />
       <workItem from="1568925055800" duration="24132000" />
       <workItem from="1569024570940" duration="12208000" />
-      <workItem from="1569528589419" duration="6849000" />
+      <workItem from="1569528589419" duration="12547000" />
+      <workItem from="1569883088585" duration="554000" />
     </task>
     <servers />
   </component>
