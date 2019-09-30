@@ -190,8 +190,11 @@ public final class CORSFilter implements Filter {
         // In XMLProxy, there is a function getSiteIdInRequest(ServletRequest request)
         // also, getSiteID(String siteIDstr)
         // 这里需要拿到siteId，assume已经拿到了
-        long siteId = 11308;
+        // 还可以添加一个变量来控制是否需要调用update方法实现是否更新 isAllowedOriginUpdate
+        // 如果cache里没有更新的话，是可以不用update的，可以添加一个flag来看需不需要更新，但是cache都是会调用的
+        long siteId = 113082;
         SiteAllowedOriginVO curSiteAllowedOriginVO = Cache.getSiteAllowedOriginVO(siteId);
+        // name: setAllowedOrigin
         updateAllowedOrigin(curSiteAllowedOriginVO);
 
         switch (requestType) {

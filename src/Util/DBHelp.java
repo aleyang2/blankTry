@@ -21,7 +21,16 @@ public class DBHelp {
     private static final String QUERY_ALLOWED_ORIGINS_BY_SITEID =
             "SELECT ITEMVALUE\n" +
             "FROM WBXSITECONFIG\n" +
-            "WHERE SITEID = ? AND ITEMNAME = 'allowedOrigin'";
+            "WHERE SITEID IN (SELECT SITEID FROM wbxsitewebdomain WHERE domainid=?) AND ITEMNAME = 'allowedOrigin' AND lastmofiedtime>date-1";
+
+
+//    select s.siteid, s.sitename, c.itemvalue,
+//    from wbxsite s, wbxsiteconfig c, wbxsitewebdomain d
+//    where s.siteid=c.siteid and s.siteid=d.siteid
+//    and d.domainid=? and c.itemname='AllowOrigin'
+//    and c.lastmodifiedtime
+
+    // Domain Name load to cache .
 
     // need to get whitelist (allowedOrigins) from database
     // SITEID ITEMNAME ITEMVALUE LASTMODIFIEDTIME
